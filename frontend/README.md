@@ -1,70 +1,214 @@
-# Getting Started with Create React App
+# AuntieMode Picks (SG)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A static affiliate-style curation site for home and lifestyle product recommendations, built for Singapore homeowners.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+AuntieMode Picks is a clean, mobile-first website featuring:
+- 12 curated product collections for home & lifestyle
+- "Basket of the Week" featured picks
+- Newsletter signup via Substack
+- Full compliance pages (affiliate disclosure, privacy, terms)
+- No tracking cookies or analytics
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React 19
+- React Router (HashRouter for GitHub Pages compatibility)
+- Tailwind CSS
+- Shadcn/UI components
+- Lucide React icons
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## GitHub Pages Deployment
 
-### `npm test`
+### Step 1: Prepare for Deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Update `package.json`** - Add homepage field:
+   ```json
+   {
+     "homepage": "https://YOUR_USERNAME.github.io/YOUR_REPO_NAME",
+     ...
+   }
+   ```
 
-### `npm run build`
+2. **Install gh-pages** (if not already installed):
+   ```bash
+   yarn add gh-pages --dev
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Add deploy scripts** to `package.json`:
+   ```json
+   "scripts": {
+     "predeploy": "yarn build",
+     "deploy": "gh-pages -d build",
+     ...
+   }
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Step 2: Deploy
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+yarn deploy
+```
 
-### `npm run eject`
+This will:
+1. Build the production version
+2. Push to the `gh-pages` branch
+3. GitHub Pages will serve from that branch
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Step 3: Configure GitHub Pages
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Go to your repo Settings > Pages
+2. Source: Deploy from a branch
+3. Branch: `gh-pages` / `root`
+4. Save
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Your site will be live at: `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Things to Replace Before Going Live
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. Substack Newsletter URL
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Search and replace all instances of:
+```
+https://YOUR_SUBSTACK_URL.substack.com
+```
 
-### Code Splitting
+With your actual Substack URL, e.g.:
+```
+https://auntiemodepicks.substack.com
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Files to update:**
+- `src/components/layout/Header.jsx`
+- `src/pages/HomePage.jsx`
+- `src/pages/CollectionDetailPage.jsx`
 
-### Analyzing the Bundle Size
+### 2. Contact Email
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Replace placeholder email in:
+- `src/pages/ContactPage.jsx`
 
-### Making a Progressive Web App
+Change:
+```
+hello@auntiemode.sg
+```
+To your actual contact email.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 3. Affiliate Links
 
-### Advanced Configuration
+All product affiliate links use this placeholder format:
+```
+https://example.com/SHOPEE_AFFILIATE_LINK_PLACEHOLDER?subid=ITEM_ID
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Replace these with your actual Shopee affiliate links.
 
-### Deployment
+**File to update:**
+- `src/data/collections.js` (all `affiliateLink` fields)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 4. Images (Optional)
 
-### `npm run build` fails to minify
+Product images are currently using Unsplash placeholders. You can replace:
+- Collection cover images in `src/data/collections.js` (the `image` field)
+- Hero image in `src/pages/HomePage.jsx`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── layout/
+│   │   ├── Header.jsx      # Navigation header
+│   │   ├── Footer.jsx      # Site footer
+│   │   └── Layout.jsx      # Page wrapper
+│   └── ui/                 # Shadcn components
+├── data/
+│   └── collections.js      # Product data (12 collections)
+├── pages/
+│   ├── HomePage.jsx        # Home (/)
+│   ├── CollectionsPage.jsx # Collections index (/collections)
+│   ├── CollectionDetailPage.jsx # Collection detail (/collections/:slug)
+│   ├── AboutPage.jsx       # About (/about)
+│   ├── ContactPage.jsx     # Contact (/contact)
+│   ├── DisclosurePage.jsx  # Affiliate disclosure (/disclosure)
+│   ├── PrivacyPage.jsx     # Privacy policy (/privacy)
+│   ├── TermsPage.jsx       # Terms of use (/terms)
+│   └── NotFoundPage.jsx    # 404 page
+├── App.js                  # Main app with routing
+├── App.css                 # Global styles
+└── index.css               # Design system tokens
+```
+
+## Collections Included
+
+1. Small HDB Kitchen Organisers
+2. Laundry & Drying Hacks
+3. Bathroom Storage & Mold Prevention
+4. Bedding Essentials (Cooling, Anti-Dust)
+5. Cleaning Tools That Actually Work
+6. Living Room Cable Management
+7. WFH Desk Comfort Upgrades
+8. Closet & Wardrobe Organisers
+9. Dehumidifying & Home Fragrance Basics
+10. Pantry Storage & Label System
+11. LED Lighting & Ambience
+12. Pet-Friendly Home Basics
+
+## Adding/Editing Products
+
+Edit `src/data/collections.js` to:
+- Add new products to existing collections
+- Create new collections
+- Update product names, notes, prices, or links
+
+Each product item structure:
+```javascript
+{
+  id: 'unique-id',
+  name: 'Product Name',
+  note: 'Auntie-style description (1-2 sentences)',
+  priceRange: '$XX-XX',
+  affiliateLink: 'https://your-affiliate-link'
+}
+```
+
+## SEO Considerations
+
+For better SEO on GitHub Pages:
+
+1. Update `public/index.html` with proper meta tags
+2. Create a `sitemap.xml` manually and add to `public/`
+3. Create a `robots.txt` and add to `public/`
+
+### Sample robots.txt:
+```
+User-agent: *
+Allow: /
+Sitemap: https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/sitemap.xml
+```
+
+## Local Development
+
+```bash
+# Install dependencies
+yarn install
+
+# Start dev server
+yarn start
+
+# Build for production
+yarn build
+```
+
+## License
+
+All rights reserved. Content and product recommendations are original work.
+
+---
+
+Built with ❤️ for Singapore homes.
