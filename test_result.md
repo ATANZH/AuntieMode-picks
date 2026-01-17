@@ -101,3 +101,94 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test the AuntieMode Picks (SG) affiliate curation website with comprehensive test cases covering navigation, home page elements, collections page, collection detail page, footer links, and mobile responsiveness."
+
+frontend:
+  - task: "Navigation Tests"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/layout/Header.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "All navigation links working correctly. Collections, About, Contact navigation tested and functional. Logo click returns to home page successfully."
+
+  - task: "Home Page Elements"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/HomePage.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Hero section displays correct title 'Practical home & lifestyle picks that don't waste your money'. Basket of the Week section shows 6 product cards as expected. Latest Collections section displays 6 collection cards. Browse Collections button is visible and functional."
+
+  - task: "Collections Page"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/CollectionsPage.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Collections page displays all 12 collection cards correctly. Navigation to collections page works via header link. Small HDB Kitchen Organisers collection card click navigates to detail page successfully."
+
+  - task: "Collection Detail Page"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/CollectionDetailPage.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Collection detail page displays correctly with title, 8 product cards showing name, price range ($15-30 format), auntie notes, Shop on Shopee buttons, and Affiliate link text. Breadcrumb navigation back to collections works properly."
+
+  - task: "Footer Links"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/layout/Footer.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "All footer links functional: Affiliate Disclosure navigates to /disclosure, Privacy Policy to /privacy, Terms of Use to /terms. All pages load correctly with appropriate content."
+
+  - task: "Mobile Responsiveness"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/layout/Header.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Mobile menu hamburger button appears on small screens (390px width). Mobile menu opens successfully showing navigation links (Home, Collections, About, Contact) in a dialog overlay. Mobile navigation is fully functional."
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: true
+
+test_plan:
+  current_focus: []
+  stuck_tasks: []
+  test_all: true
+  test_priority: "completed"
+
+agent_communication:
+    - agent: "testing"
+      message: "Comprehensive testing completed for AuntieMode Picks (SG) website. All requested test cases passed successfully. Website is fully functional with proper navigation, content display, and mobile responsiveness. No critical issues found."
