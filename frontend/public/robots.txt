@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap - update with your actual domain
-Sitemap: https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/sitemap.xml
+Sitemap: https://ATANZH.github.io/AuntieMode-picks/sitemap.xml
