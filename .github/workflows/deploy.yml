@@ -25,17 +25,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "yarn"
-          cache-dependency-path: frontend/yarn.lock
 
-      - name: Install dependencies
+      - name: Find and install dependencies
         run: |
-          cd frontend
-          yarn install --frozen-lockfile
+          if [ -d "frontend" ]; then
+            cd frontend
+          fi
+          yarn install
 
       - name: Build
         run: |
-          cd frontend
+          if [ -d "frontend" ]; then
+            cd frontend
+          fi
           CI=false yarn build
 
       - name: Setup Pages
@@ -44,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/build
+          path: ${{ github.workspace }}/frontend/build
 
   deploy:
     environment:
