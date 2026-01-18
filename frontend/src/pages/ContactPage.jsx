@@ -47,9 +47,9 @@ const ContactPage = () => {
                     Email us at:
                   </p>
                   <p className="text-lg font-medium text-foreground mb-4">
-                    hello@auntiemode.sg
+                    aloysiustanziheng@gmail.com
                   </p>
-                  <a href="mailto:hello@auntiemode.sg">
+                  <a href="mailto:aloysiustanziheng@gmail.com">
                     <Button variant="default">
                       <Mail className="mr-2 h-4 w-4" />
                       Send Email
