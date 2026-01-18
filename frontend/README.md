@@ -21,49 +21,33 @@ AuntieMode Picks is a clean, mobile-first website featuring:
 
 ## GitHub Pages Deployment
 
-### Step 1: Prepare for Deployment
-
-1. **Update `package.json`** - Add homepage field:
-   ```json
-   {
-     "homepage": "https://YOUR_USERNAME.github.io/YOUR_REPO_NAME",
-     ...
-   }
-   ```
-
-2. **Install gh-pages** (if not already installed):
-   ```bash
-   yarn add gh-pages --dev
-   ```
-
-3. **Add deploy scripts** to `package.json`:
-   ```json
-   "scripts": {
-     "predeploy": "yarn build",
-     "deploy": "gh-pages -d build",
-     ...
-   }
-   ```
-
-### Step 2: Deploy
-
-```bash
-yarn deploy
+### Your Site URL
+```
+https://ATANZH.github.io/AuntieMode-picks
 ```
 
-This will:
-1. Build the production version
-2. Push to the `gh-pages` branch
-3. GitHub Pages will serve from that branch
+### To Deploy:
 
-### Step 3: Configure GitHub Pages
+1. **Clone your repo locally** (after saving to GitHub)
+2. **Navigate to frontend folder:**
+   ```bash
+   cd frontend
+   ```
+3. **Install dependencies:**
+   ```bash
+   yarn install
+   ```
+4. **Deploy to GitHub Pages:**
+   ```bash
+   yarn deploy
+   ```
+5. **Configure GitHub Pages:**
+   - Go to repo Settings → Pages
+   - Source: Deploy from branch
+   - Branch: `gh-pages` / `root`
+   - Save
 
-1. Go to your repo Settings > Pages
-2. Source: Deploy from a branch
-3. Branch: `gh-pages` / `root`
-4. Save
-
-Your site will be live at: `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME`
+Your site will be live in 2-3 minutes!
 
 ---
 
