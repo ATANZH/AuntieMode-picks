@@ -103,4 +103,15 @@ webpackConfig.devServer = (devServerConfig) => {
   return devServerConfig;
 };
 
-module.exports = webpackConfig;
+
+const path = require("path");
+
+module.exports = {
+  webpack: {
+    configure: (webpackConfig) => {
+      webpackConfig.output.publicPath = "/AuntieMode-picks/";
+      return webpackConfig;
+    },
+  },
+};
+
